@@ -27,14 +27,15 @@ Then select and open ```LendingLibrary.sln```
 
 ## Visuals
 
-##### Application Start
-![Image 1](https://via.placeholder.com/750x500)
-##### Using the Application
-![Image 1](https://via.placeholder.com/750x500)
-##### Application End
-![Image 1](https://via.placeholder.com/750x500)
+##### Full Library
+![Full Library](https://github.com/Roketsu86/Lab07-Lending-Library/blob/master/Assets/lending-library-init.jpg)
+##### Checked Out List
+![Checked Out List](https://github.com/Roketsu86/Lab07-Lending-Library/blob/master/Assets/lending-library-checked-out.jpg)
+##### Still Available List
+![Still Available List](https://github.com/Roketsu86/Lab07-Lending-Library/blob/master/Assets/lending-library-available.jpg)
 
 ------------------------------
 
 ## Change Log
+1.1: *Created Console app demo* - 29 March 2019
 1.0: *Initial Buildout* - 28 March 2019
