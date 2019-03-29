@@ -77,6 +77,45 @@ namespace LendingLibraryTest
         }
 
         [Fact]
+        public void CanFindIfBookIsInLibrary()
+        {
+            Library<Book> library = new Library<Book>();
+            Book book1 = new Book("Ender's Game", "Orson Scott Card", 2, 1985, true);
+            Book book2 = new Book("Speaker for the Dead", "Orson Scott Card", 2, 1986, false);
+            Book book3 = new Book("Xenocide", "Orson Scott Card", 2, 1991, true);
+            Book book4 = new Book("Children of the Mind", "Orson Scott Card", 2, 1996, true);
+            Book book5 = new Book("Ender's Shadow", "Orson Scott Card", 2, 1999, false);
+
+            library.Add(book1);
+            library.Add(book2);
+            library.Add(book3);
+            library.Add(book4);
+            library.Add(book5);
+
+            Assert.True(library.IsAvailable(book1));
+        }
+
+        [Fact]
+        public void IsAvailableReturnFalseIfBookIsNotInLibrary()
+        {
+            Library<Book> library = new Library<Book>();
+            Book book1 = new Book("Ender's Game", "Orson Scott Card", 2, 1985, true);
+            Book book2 = new Book("Speaker for the Dead", "Orson Scott Card", 2, 1986, false);
+            Book book3 = new Book("Xenocide", "Orson Scott Card", 2, 1991, true);
+            Book book4 = new Book("Children of the Mind", "Orson Scott Card", 2, 1996, true);
+            Book book5 = new Book("Ender's Shadow", "Orson Scott Card", 2, 1999, false);
+            Book unavailableBook = new Book("The Hobbit", "J.R.R. Tolkein", 3, 1937, true);
+
+            library.Add(book1);
+            library.Add(book2);
+            library.Add(book3);
+            library.Add(book4);
+            library.Add(book5);
+
+            Assert.False(library.IsAvailable(unavailableBook));
+        }
+
+        [Fact]
         public void CanGetSetBookTitle()
         {
             Book book = new Book("The Hive", "Orson Scott Card", 2, 2019, false);

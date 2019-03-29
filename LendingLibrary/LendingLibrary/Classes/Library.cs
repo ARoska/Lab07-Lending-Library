@@ -51,6 +51,18 @@ namespace LendingLibrary.Classes
             }
         }
 
+        public bool IsAvailable(T book)
+        {
+            for (int i = 0; i < books.Length; i++)
+            {
+                if (books[i] != null && books[i].Equals(book))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public int Count()
         {
             return count;
