@@ -5,48 +5,58 @@ using System.Text;
 
 namespace LendingLibrary.Classes
 {
-    class Library<T> : IEnumerable
+    public class Library<T> : IEnumerable
     {
-        T[] books = new T[15];
+        T[] books = new T[20];
         int count = 0;
 
-        public void Add(T number)
+        public void Add(T book)
         {
-            if (count == books.Length)
+            if (count == (books.Length - 1))
             {
-                Array.Resize(ref books, 5);
+                Array.Resize(ref books, (books.Length + 10));
             }
-            books[count++] = number;
-            count++;
+            books[count++] = book;
         }
 
         public void Remove(T book)
         {
-            T[] temp = null;
-            int index = Array.IndexOf(books, book);
+            if (Array.IndexOf(books, book) != -1)
+            {
+                T[] temp = new T[books.Length];
+                int index = Array.IndexOf(books, book);
 
+                for (int i = 0; i < books.Length; i++)
+                {
+                    if (i < index)
+                    {
+                        temp[i] = books[i];
+                    }
+                    if (i > index)
+                    {
+                        temp[i - 1] = books[i];
+                    }
+                }
+                books = temp;
+
+                count--;
+                if (count == (books.Length - 6))
+                {
+                    Array.Resize(ref books, (books.Length - 5));
+                }
+            }
+        }
+
+        public bool IsAvailable(T book)
+        {
             for (int i = 0; i < books.Length; i++)
             {
-                if (i < index)
+                if (books[i] != null && books[i].Equals(book))
                 {
-                    temp[i] = books[i];
-                }
-                if (i == index)
-                {
-                    i++;
-                }
-                else if (i > index)
-                {
-                    temp[i - 1] = books[i - 1];
+                    return true;
                 }
             }
-            books = temp;
-
-            count--;
-            if (count == (books.Length - 5))
-            {
-                Array.Resize(ref books, 5);
-            }
+            return false;
         }
 
         public int Count()
