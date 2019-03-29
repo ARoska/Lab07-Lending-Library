@@ -7,7 +7,7 @@ namespace LendingLibrary.Classes
 {
     class Library<T> : IEnumerable
     {
-        T[] books = new T[15];
+        T[] books = new T[20];
         int count = 0;
 
         public void Add(T number)
@@ -17,7 +17,6 @@ namespace LendingLibrary.Classes
                 Array.Resize(ref books, 5);
             }
             books[count++] = number;
-            count++;
         }
 
         public void Remove(T book)
