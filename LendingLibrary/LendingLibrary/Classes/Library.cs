@@ -10,13 +10,13 @@ namespace LendingLibrary.Classes
         T[] books = new T[20];
         int count = 0;
 
-        public void Add(T number)
+        public void Add(T book)
         {
             if (count == books.Length)
             {
-                Array.Resize(ref books, 5);
+                Array.Resize(ref books, (books.Length + 10));
             }
-            books[count++] = number;
+            books[count++] = book;
         }
 
         public void Remove(T book)
@@ -32,11 +32,7 @@ namespace LendingLibrary.Classes
                     {
                         temp[i] = books[i];
                     }
-                    if (i == index)
-                    {
-                        i++;
-                    }
-                    else if (i > index)
+                    if (i > index)
                     {
                         temp[i - 1] = books[i - 1];
                     }
@@ -46,7 +42,7 @@ namespace LendingLibrary.Classes
                 count--;
                 if (count == (books.Length - 5))
                 {
-                    Array.Resize(ref books, 5);
+                    Array.Resize(ref books, (books.Length - 5));
                 }
             }
         }
