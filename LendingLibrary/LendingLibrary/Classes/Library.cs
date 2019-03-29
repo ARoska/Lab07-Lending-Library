@@ -12,7 +12,7 @@ namespace LendingLibrary.Classes
 
         public void Add(T book)
         {
-            if (count == books.Length)
+            if (count == (books.Length - 1))
             {
                 Array.Resize(ref books, (books.Length + 10));
             }
@@ -34,13 +34,13 @@ namespace LendingLibrary.Classes
                     }
                     if (i > index)
                     {
-                        temp[i - 1] = books[i - 1];
+                        temp[i - 1] = books[i];
                     }
                 }
                 books = temp;
 
                 count--;
-                if (count == (books.Length - 5))
+                if (count == (books.Length - 6))
                 {
                     Array.Resize(ref books, (books.Length - 5));
                 }

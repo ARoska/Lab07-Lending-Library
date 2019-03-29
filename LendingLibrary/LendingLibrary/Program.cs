@@ -9,7 +9,6 @@ namespace LendingLibrary
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             Library<Book> library = LibraryInit();
             Borrow(library);
         }
@@ -45,48 +44,54 @@ namespace LendingLibrary
             List<Book> available = new List<Book>();
             int counter = 0;
 
-            Console.WriteLine("All books in the Library:\n" +
+            Console.WriteLine($"There are {library.Count()} books in the Library:\n" +
                 "=======================");
             foreach (Book book in library)
             {
                 Console.WriteLine($"Title: {book.Title}, Author: {book.Name}, Genre: {book.GetGenre}, \n" +
-                    $"Release Date: {book.ReleaseDate}, Is it a hardcover: {book.Hardcover}\n");
+                    $"Release Date: {book.ReleaseDate}, Hardcover: {book.Hardcover}\n");
                 if ((counter % 3) == 0)
                 {
                     checkedOut.Add(book);
-                    library.Remove(book);
                 }
-                if (library.IsAvailable(book))
+                else
                 {
                     available.Add(book);
-                    library.Remove(book);
                 }
 
                 counter++;
             }
             Console.WriteLine("=======================\n" +
                 "\n" +
-                "These books are checked out:\n" +
+                $"{checkedOut.Count} books are checked out:\n" +
                 "=======================");
 
             foreach (Book book in checkedOut)
             {
                 Console.WriteLine($"Title: {book.Title}, Author: {book.Name}, Genre: {book.GetGenre}, \n" +
-                    $"Release Date: {book.ReleaseDate}, Is it a hardcover: {book.Hardcover}\n");
+                    $"Release Date: {book.ReleaseDate}, Hardcover: {book.Hardcover}\n");
+                if (library.IsAvailable(book))
+                {
+                    library.Remove(book);
+                }
             }
             Console.WriteLine("=======================\n" +
                 "\n" +
-                "These books are still available for checkout out:\n" +
+                $"{available.Count} books are still available for checkout out:\n" +
                 "=======================");
 
             foreach (Book book in available)
             {
                 Console.WriteLine($"Title: {book.Title}, Author: {book.Name}, Genre: {book.GetGenre}, \n" +
-                    $"Release Date: {book.ReleaseDate}, Is it a hardcover: {book.Hardcover}\n");
+                    $"Release Date: {book.ReleaseDate}, Hardcover: {book.Hardcover}\n");
+                if (library.IsAvailable(book))
+                {
+                    library.Remove(book);
+                }
             }
             Console.WriteLine("=======================\n" +
-                "");
-
+                "\n" +
+                $"{library.Count()} books remain in the Library.");
         }
     }
 }
