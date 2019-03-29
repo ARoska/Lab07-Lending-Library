@@ -5,11 +5,19 @@ using System;
 
 namespace LendingLibrary
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+        }
+
+        static void LibraryInit()
+        {
+            Library<Book> library = new Library<Book>
+            {
+                new Book{"Ender's Game",false, Book.Genre.SciFi, }
+            }
         }
     }
 }
