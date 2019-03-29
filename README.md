@@ -38,4 +38,5 @@ Then select and open ```LendingLibrary.sln```
 
 ## Change Log
 1.1: *Created Console app demo* - 29 March 2019
+
 1.0: *Initial Buildout* - 28 March 2019
