@@ -21,12 +21,12 @@ namespace LendingLibrary.Classes
 
         public Genre GetGenre { get; set; }
 
-        public Book(string title, Author authorInfo, bool hardcover, Genre genreInfo)
+        public Book(string title, bool hardcover, Genre genreInfo, Author authorInfo)
         {
             Title = title;
-            Author author = authorInfo;
             Hardcover = hardcover;
             Genre genre = genreInfo;
+            Author author = authorInfo;
         }
     }
 }
