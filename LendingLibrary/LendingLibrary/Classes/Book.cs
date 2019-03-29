@@ -12,12 +12,11 @@ namespace LendingLibrary.Classes
 
         public Genre GetGenre { get; set; }
 
-        public Book(string title, string name, string genre, int releaseDate, bool hardcover)
+        public Book(string title, string name, int genreInt, int releaseDate, bool hardcover)
             :base(name)
         {
             Title = title;
-            //Author author = new Author(name);
-            GetGenre = (Genre)Enum.Parse(typeof(Genre), genre);
+            GetGenre = ((Genre)genreInt);
             ReleaseDate = releaseDate;
             Hardcover = hardcover;
         }
